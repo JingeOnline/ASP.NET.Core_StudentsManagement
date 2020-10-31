@@ -30,9 +30,15 @@ namespace ASP.NET.Core_StudentsManagement.Controllers
             return View(students);
         }
 
-        public IActionResult Details(int? id)
+        public IActionResult Details(int id)
         {
-            StudentModel student = _studentService.GetStudentById(id ?? 1);
+            StudentModel student = _studentService.GetStudentById(id);
+
+            if (student == null)
+            {
+                Response.StatusCode = 404;
+                return View("StudentNotFound", id);
+            }
             return View(student);
         }
         
@@ -90,5 +96,21 @@ namespace ASP.NET.Core_StudentsManagement.Controllers
             //如果没有通过模型校验，返回Create()操作方法。
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            StudentModel student = _studentService.GetStudentById(id);
+            if (student != null)
+            {
+                StudentCreateViewModel viewModel = new StudentCreateViewModel();
+                viewModel.Student = student;
+                return View(viewModel);
+            }
+            else
+            {
+                throw new Exception("The student doesn't exist.");
+            }
+        } 
     }
 }

@@ -43,6 +43,7 @@ namespace ASP.NET.Core_StudentsManagement
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             else
             {

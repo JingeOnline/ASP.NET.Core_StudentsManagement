@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>@ViewBag.ErrorMessage</h1>
+
+<h3>OriginalPath</h3>
+<h4>@ViewBag.OriginalPath</h4>
+<h3>OriginalQueryString</h3>
+<h4>@ViewBag.OriginalQueryString</h4>
+
+<a asp-controller="home" asp-action="index">点击返回首页</a>
