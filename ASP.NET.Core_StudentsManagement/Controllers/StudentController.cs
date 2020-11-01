@@ -45,6 +45,7 @@ namespace ASP.NET.Core_StudentsManagement.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            //throw new Exception();
             return View();
         }
 

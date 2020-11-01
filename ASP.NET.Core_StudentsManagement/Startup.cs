@@ -35,6 +35,7 @@ namespace ASP.NET.Core_StudentsManagement
             services.AddDbContextPool<AppDbContext>(
                 options=>options.UseSqlServer(Configuration.GetConnectionString("StudentDbConnection"))
                 );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +43,9 @@ namespace ASP.NET.Core_StudentsManagement
         {
             if (env.IsDevelopment())
             {
+                //DeveloperExceptionPageOptions options = new DeveloperExceptionPageOptions();
+                //options.SourceCodeLineCount = 20;
+                //app.UseDeveloperExceptionPage(options);
                 app.UseDeveloperExceptionPage();
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
